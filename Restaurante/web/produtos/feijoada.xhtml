@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile"
+      style="height: 100%;margin: 0px;">
+
+    <f:view renderKitId="PRIMEFACES_MOBILE"  />
+
+    <h:head> 
+        <title>Feijoada</title>
+        <link href="../resources/css/imagens.css" rel="stylesheet" type="text/css"/>        
+        <link href="../resources/css/default.css" rel="stylesheet" type="text/css"/>
+        <link href="../jquery.mobile.icons.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../Restaurant.min.css" rel="stylesheet" type="text/css"/>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <style>
+            .teste{background-color: #6666ff!important; width: 70%;}
+            #a{background-color: #6666ff!important;}
+        </style>
+    </h:head>
+
+    <h:body>
+        <pm:page  id="geral"  >
+            <pm:header  style="height: 12%;font-size: 18px;  ">
+<img style="height: 180%; width: auto; margin-left: 42.5%" src="../images/logo.png" alt=""/>   
+            </pm:header>
+            <table  style=" width: 11%; margin-left: 5%;margin-top: 1.5%;float: left;">
+                <tr>
+                    <td><b><p:outputLabel value="Total Pedido," style="width: 100%;font-style: oblique;"/></b></td>                    
+                    <td><p:outputLabel value="#{mbPedido.totalPedido}" style="width: 90%" /></td>
+                </tr>
+            </table>
+            <table  style=" width: 30%; margin-left: 60%;height: 1%;">
+                <tr>
+                    <td><p:outputLabel value="Usuário Logado, " style="width: 85%;float: left;"  /></td>
+                    <td><b><p:outputLabel value=" #{bLogin.nome}" style="width: 20%;float: left;" /></b></td>
+                    <td><p:commandButton action="#{mbLogin.encerrarSessao()}" value="Sair"  icon="ui-icon-home" style="width: 100%;float: left;" /></td>
+                </tr>
+            </table>
+            <hr />
+
+            <pm:content style="height: 60%;float: left; width: 29%;">                
+                <h:form>
+                    <p:panel header="Categoria">
+                        <p:menu style="width: 100%; height: 60%;" model="#{mbMenu.menuModel}"  >                         
+                        </p:menu>                
+                    </p:panel>
+                </h:form>
+            </pm:content>
+
+            <pm:content style="width: 58%; margin-left: 33%;min-height: 550px;">                
+                <h:form>                    
+                    <p:spacer height="2" />
+                    <p:dataList value="#{mbMenu.produto(17)}" paginator="true" rows="10"
+                                var="produto" widgetVar="produtos" style="height: 60%;background-color: #6666ff">
+                        <f:facet name="header" class="teste" id="a" >
+                            Feijoada
+                        </f:facet> 
+                        <div style="float: left">
+                            <img src="../resources/imagens/proximo.gif" width="120px" height='120px' />
+                        </div>
+
+                        <div style="float: left;margin-left: 10px;" >
+                            <p:outputLabel value="Código Produto: #{produto.idProduto}" />
+                            <p:outputLabel value="Descrição Produto :#{produto.descricao}" />                                           
+                            <p:outputLabel value="Valor Unitário :#{produto.vlUnit}" />
+                            <p:outputLabel value="Quantidade"  >                        
+                            </p:outputLabel>
+                            <p:inputText type="number"  style="width: 60px;float: left;"  required="true" value="#{produto.quant}" />   
+                            <p class="ui-li-aside">
+                                <p:commandButton  action="#{mbMenu.finalizar()}" value="" icon="adicionar" style="width: 60px;height: 50px;" >
+                                    <p:collector value="#{produto}" addTo="#{mbPedido.getPedido(produto)}" unique="true" />
+                                </p:commandButton>
+                            </p>
+                        </div>
+                        <input type="hidden" value="#{produto.idGrupo}" />
+                    </p:dataList>
+                </h:form>
+            </pm:content>
+
+
+            <pm:footer style="text-align: center; height: 8%; margin: auto;">
+                <div id="rodape">
+                    <div id="contRodape">
+                        <b>Foxconn Informática!  </b>                    
+                        <b>Desenvolvido por <a href="http://www.foxconnect.com.br" target="_blank">Foxconn informática.</a></b>                    
+                    </div>
+                </div> 
+            </pm:footer>
+        </pm:page>
+
+    </h:body>
+</html>

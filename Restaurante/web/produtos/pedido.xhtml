@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile"
+
+      style="height: 100%;margin: 0px;"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <f:view renderKitId="PRIMEFACES_MOBILE"  />
+
+    <h:head> 
+        <title>Pedido</title>        
+        <link href="../resources/css/imagens.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/default.css" rel="stylesheet" type="text/css"/>   
+        <link href="../jquery.mobile.icons.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../Restaurant.min.css" rel="stylesheet" type="text/css"/>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    </h:head>
+
+    <h:body>
+        <pm:page id="geral"  >
+            <pm:header  style="height: 12%;font-size: 18px;  " >
+                <img style="height: 180%; width: auto; margin-left: 42.5%" src="../images/logo.png" alt=""/>   
+            </pm:header>
+            
+            <table  style=" width: 11%; margin-left: 5%;margin-top: 1.5%;float: left;">
+                <tr>
+                    <td><b><p:outputLabel value="Total Pedido," style="width: 100%;font-style: oblique;"/></b></td>                    
+                    <td><p:outputLabel value="#{mbPedido.totalPedido}" style="width: 90%" /></td>
+                </tr>
+            </table>
+            <table  style=" width: 30%; margin-left: 60%;height: 1%;">
+                <tr>
+                    <td><p:outputLabel value="Usuário Logado, " style="width: 85%;float: left;"  /></td>
+                    <td><b><p:outputLabel value=" #{bLogin.nome}" style="width: 20%;float: left;" /></b></td>
+                    <td><p:commandButton action="#{mbLogin.encerrarSessao()}" value="Sair"  icon="ui-icon-home" style="width: 100%;float: left;" /></td>
+                </tr>
+            </table>
+            <hr />
+
+            <pm:content style="height: 60%;float: left; width: 29%;">                
+                <h:form>
+                    <p:panel header="Categoria">
+                        <p:menu style="width: 100%;" model="#{mbMenu.menuModel}"  >                         
+                        </p:menu>                
+                    </p:panel>
+                    <p:commandButton value="Lista de Produtos" action="#{mbPedido.listaPedidos()}" />
+                    <p:commandButton value="Cancelar Pedido" action="#{mbPedido.cancelarPedido()}" />
+                </h:form>
+            </pm:content>
+
+            <pm:content style="height: 60%;width: 58%;margin-left: 33%;">
+                <ui:insert name="centro">  
+
+                </ui:insert>
+            </pm:content>
+
+
+            <pm:footer style="text-align: center; height: 8%; margin: auto;">
+                <div id="rodape">
+                    <div id="contRodape">
+                        <b>Foxconn Informática!  </b>                    
+                        <b>Desenvolvido por <a href="http://www.foxconnect.com.br" target="_blank">Foxconn informática.</a></b>                    
+                    </div>
+                </div> 
+            </pm:footer>
+        </pm:page>
+
+    </h:body>
+</html>

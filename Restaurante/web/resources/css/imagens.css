@@ -1,0 +1,67 @@
+/* 
+    Created on : 08/01/2015, 11:52:46
+    Author     : Fox W8
+*/
+
+.adicionar{
+    background-image: url("../imagens/adicionar.gif");
+    background-origin: inherit;
+    background-repeat: no-repeat;
+    background-position: 20px;
+}
+
+.alterar{
+    background-image: url("../imagens/alterar.gif");
+    background-origin: inherit;
+    background-repeat: no-repeat;
+    background-position: 20px;
+}
+
+.anterior{
+    background-image: url("../imagens/anterior.gif");
+    background-origin: inherit;
+    background-repeat: no-repeat;
+    background-position: 20px;
+}
+
+
+.delete{
+    background-image: url("../imagens/delete.gif");
+    background-origin: inherit;
+    background-repeat: no-repeat;
+    background-position: 10px;
+}
+
+.pesquisar{
+    background-image: url("../imagens/pesquisar.gif");
+    background-origin: inherit;
+    background-repeat: no-repeat;
+    background-position: 20px;
+}
+.proximo{
+    background-image: url("../imagens/proximo.gif");
+    background-origin: inherit;
+    background-repeat: no-repeat;
+    background-position: 20px;
+}
+
+.salvar{
+    background-image: url("../imagens/salvar.gif");
+    background-origin: inherit;
+    background-repeat: no-repeat;
+    background-position: 20px;
+}
+
+.salvar_tudo{
+    background-image: url("../imagens/salvar_tudo.gif");
+    background-origin: inherit;
+    background-repeat: no-repeat;
+    background-position: 20px;
+}
+
+.confirma{
+    background-image: url("../imagens/confirma.png");
+    background-origin: inherit;
+    background-repeat: no-repeat;
+    background-position: 10%;    
+}
